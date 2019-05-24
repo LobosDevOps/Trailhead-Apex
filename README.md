@@ -51,6 +51,4 @@ https://developer.salesforce.com/jpblogs/2018/06/data_integration_superbadge/
         ・コールバック URL:         https://sb-integration-pms.herokuapp.com/oauth/_callback
         ・選択した OAuth 範囲:      Full access 
                                    Perform requests on your behalf at any time (refresh_token, offline_access)      
-                         
-       Connected App Name
   3) Synchronize Salesforce opportunity data with Square Peg's PMS external system
