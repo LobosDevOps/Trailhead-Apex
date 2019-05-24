@@ -43,5 +43,13 @@ https://developer.salesforce.com/jpblogs/2018/06/data_integration_superbadge/
         ・カスタム項目: 	 Token
         ・manamge data:  name :     ProjectServiceToken
                          Username:  xxxxx  (Remote site から取得する)
-       B. Connected Apps 
+       B. Connected Apps (App manager - new Connected App )
+        ・接続アプリケーション名:    ProjectService
+        ・取引先責任者 メール:       your mail
+        ・OAuth 設定の有効化:       check
+        ・コールバック URL:         https://sb-integration-pms.herokuapp.com/oauth/_callback
+        ・選択した OAuth 範囲:      Full access 
+                                   Perform requests on your behalf at any time (refresh_token, offline_access)      
+                         
+       Connected App Name
   3) Synchronize Salesforce opportunity data with Square Peg's PMS external system
