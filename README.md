@@ -1,6 +1,6 @@
 1. Data Integration Specialist -- superbadge
 https://trailhead.salesforce.com/ja/content/learn/superbadges/superbadge_integration
-  1) step1 Configure outbound application and integration security
+  1) step1 Configure outbound application and integration security  -- outlined 
        A.  Configure a named credential(指定ログイン情報)
         ・表示ラベル: ProjectService
         ・URL:       https://sb-integration-pms.herokuapp.com/projects
@@ -25,5 +25,5 @@ https://trailhead.salesforce.com/ja/content/learn/superbadges/superbadge_integra
         ・manamge data:  name :     BillingServiceCredential
                          Username:  bsUser1
                          Password:  xxx
-  2) Configure inbound integration security
+  2) Configure inbound integration security   -- inbound
   3) Synchronize Salesforce opportunity data with Square Peg's PMS external system
