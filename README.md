@@ -44,6 +44,7 @@ https://developer.salesforce.com/jpblogs/2018/06/data_integration_superbadge/
         ・manamge data:  name :     ProjectServiceToken
                          Username:  xxxxx  (Remote site から取得する)
        B. Connected Apps (App manager - new Connected App )
+         ※ The external PMS service calls your org’s custom Apex REST service back
          ※　作成しなくても、StepCheckが通過できる
         ・接続アプリケーション名:    ProjectService
         ・取引先責任者 メール:       your mail
