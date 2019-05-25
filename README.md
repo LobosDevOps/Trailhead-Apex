@@ -37,7 +37,7 @@ https://developer.salesforce.com/jpblogs/2018/06/data_integration_superbadge/
                          Username:  bsUser1
                          Password:  xxx
   2) step2: Configure inbound integration security   -- inbound  -- for PMS Connected
-       A.  Configure a custom setting (unpkg　に既に作成済み)
+       A.  Configure a custom setting (unpkg　に既に作成済み)  -- for PMS RESTful web service
         ・表示ラベル:    ServiceTokens
         ・表示:          保護
         ・設定種別:      リスト
