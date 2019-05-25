@@ -4,7 +4,7 @@ https://trailhead.salesforce.com/ja/content/learn/superbadges/superbadge_integra
 https://developer.salesforce.com/jpblogs/2018/06/data_integration_superbadge/
 
   1) step1: Configure outbound application and integration security  -- outlined
-       A.  Configure a named credential(指定ログイン情報)  -- REST-based
+       A.  Configure a named credential(指定ログイン情報)  -- REST-based   --- for PMS
         ・表示ラベル: ProjectService
         ・URL:       https://sb-integration-pms.herokuapp.com/projects
         ・証明書:    null
@@ -21,7 +21,8 @@ https://developer.salesforce.com/jpblogs/2018/06/data_integration_superbadge/
           ・Required Headers:  Content-Type: JSON
           ・Return Status:     ‘OK’ or error message
           ・Response Code:     201 = Success 500 = Failure
-      B. Configure a remote site (リモートサイトの設定)　 -- SOAP-based
+      B. Configure a remote site (リモートサイトの設定)　 -- SOAP-based  --for billing system
+         ※ The billing system has a SOAP-based endpoint;
         ・リモートサイト名:               BillingService
         ・リモートサイトの URL:           http://sb-integration-bs.herokuapp.com
         ・プロトコルセキュリティの無効化:  uncheck
