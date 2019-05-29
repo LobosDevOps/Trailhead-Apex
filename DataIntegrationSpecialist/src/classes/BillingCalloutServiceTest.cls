@@ -1,0 +1,61 @@
+@isTest
+private class BillingCalloutServiceTest {
+    private static final String PROJECT_REF = '12345';
+    private static final Decimal BILLABLE_AMOUNT = 100;
+
+    private static final String OK = 'OK';
+    private static final String UNAUTHORIZED = 'UNAUTHORIZED';
+    private static final String STATUS_RUNNING = 'Running';
+    private static final String STATUS_BILLABLE = 'Billable';
+    private static final String STATUS_BILLED = 'Billed';
+
+    @testSetup static void setup() {
+        // create opportunity and project
+        Opportunity opp = OpportunityFactory.createOpportunitiy(ProjectCalloutService.STAGE_PROSPECTING);
+        insert opp;
+
+        Project__c project = new Project__c();
+        project.ProjectRef__c = PROJECT_REF;
+        project.Opportunity__c = opp.Id;
+        project.Billable_Amount__c = BILLABLE_AMOUNT;
+        project.Status__c = STATUS_RUNNING;
+        insert project;
+
+        // create service credentials custum setting
+        ServiceCredentials__c sc = new ServiceCredentials__c();
+        sc.name = BillingCalloutService.BIlLING_SERVICE_CREDENTIALS;
+        sc.Username__c = 'username';
+        sc.Password__c = 'password';
+        insert sc;
+    }
+
+    @isTest private static void testSuccess() {
+        Test.setMock(WebServiceMock.class, new BillingCalloutServiceMock());
+
+        Test.startTest();
+        //BillingCalloutService.callBillingService([SELECT Id FROM Project__c WHERE ProjectRef__c =: PROJECT_REF].Id);
+        Project__c pj = [SELECT Id FROM Project__c WHERE ProjectRef__c =: PROJECT_REF];
+        pj.Status__c = STATUS_BILLABLE;
+        update pj;
+        
+        Test.stopTest();
+
+        Project__c project = [SELECT Status__c FROM Project__c WHERE ProjectRef__c =: PROJECT_REF];
+        System.assertEquals(STATUS_BILLED, project.Status__c);
+    }
+
+    @isTest private static void testFailure() {
+        Test.setMock(WebServiceMock.class, new BillingCalloutServiceMockFailure());
+
+        Test.startTest();
+        //BillingCalloutService.callBillingService([SELECT Id FROM Project__c WHERE ProjectRef__c =: PROJECT_REF].Id);
+        Project__c pj = [SELECT Id FROM Project__c WHERE ProjectRef__c =: PROJECT_REF];
+        pj.Status__c = STATUS_BILLABLE;
+        update pj;
+        
+        Test.stopTest();
+
+        Project__c project = [SELECT Status__c FROM Project__c WHERE ProjectRef__c =: PROJECT_REF];
+        System.assertEquals(STATUS_BILLABLE, project.Status__c);
+    }
+}
